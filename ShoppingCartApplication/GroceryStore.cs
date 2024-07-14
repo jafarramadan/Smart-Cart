@@ -8,5 +8,33 @@ namespace ShoppingCartApplication
 {
     public class GroceryStore
     {
+        private ProductGenerator productGenerator;
+
+        public GroceryStore(ProductGenerator generator)
+        {
+            productGenerator = generator;
+        }
+
+        public void DisplayItems()
+        {
+            productGenerator.GenerateProduct("food");
+        }
+        public void UpdateItems(ShoppingCart shoppingCart) {
+           
+            int productIndex;
+            if (!int.TryParse(Console.ReadLine(), out productIndex) || productIndex <= 0 || productIndex > productGenerator.ProductCategoryMap.Count)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
+                return;
+            }
+
+            var product = productGenerator.ProductCategoryMap.ElementAt(productIndex - 1).Value;
+            shoppingCart.AddItems(product);
+            Console.WriteLine($"{product.Name} has been added to your cart.");
+
+
+
+        }
+
     }
 }
