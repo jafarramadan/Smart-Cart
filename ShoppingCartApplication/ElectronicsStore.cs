@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace ShoppingCartApplication
 {
-    public class ClothingStore
+    public class ElectronicsStore
     {
         private ProductGenerator productGenerator;
 
-        public ClothingStore(ProductGenerator generator)
+        public ElectronicsStore(ProductGenerator generator)
         {
             productGenerator = generator;
         }
 
         public void DisplayItems()
         {
-            productGenerator.GenerateProduct("clothing");
+            productGenerator.GenerateProduct("electronics");
         }
         public void UpdateItems(ShoppingCart shoppingCart)
         {
