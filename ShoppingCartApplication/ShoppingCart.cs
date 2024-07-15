@@ -10,13 +10,31 @@ namespace ShoppingCartApplication
     {
         List<Product> items=new List<Product> { };
 
-        public void AddItems(Product item)
+        public bool AddItems(Product item)
         {
+            int count =items.Count;
             items.Add(item);
+            if (count+1==items.Count) 
+            {
+                return true;
+            }
+            else
+            {
+            return false; 
+            }
         }
-        public void removeItems(Product item) 
-        { 
-            items.Remove(item);        
+        public bool removeItems(Product item) 
+        {             
+            int count = items.Count;
+            items.Remove(item);
+            if (count -1 == items.Count)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void ViewItems()
@@ -30,7 +48,7 @@ namespace ShoppingCartApplication
             }
         }
 
-        public void CalculateTotal()
+        public int CalculateTotal()
         {   
             int count = 0;
             foreach (Product item in items)
@@ -38,6 +56,8 @@ namespace ShoppingCartApplication
                 count += item.Price;
             }
             Console.WriteLine($"\ntotal price is : {count}\n");
+
+            return count;
 
            
         }

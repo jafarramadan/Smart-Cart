@@ -25,8 +25,9 @@
                 Console.WriteLine("1 - Food");
                 Console.WriteLine("2 - Clothing");
                 Console.WriteLine("3 - Electronics");
-                Console.WriteLine("4 - Your Cart");
-                Console.WriteLine("5 - End the shopping");
+                Console.WriteLine("4 - Random");
+                Console.WriteLine("5 - Your Cart");
+                Console.WriteLine("6 - End the shopping");
 
                 int choice;
                 if (!int.TryParse(Console.ReadLine(), out choice))
@@ -40,27 +41,33 @@
                     case 1:
                         Console.WriteLine("\nDisplaying food items:");
                         groceryStore.DisplayItems();
-                        Console.WriteLine("\nEnter the number of the product to add it to your cart:");
+                        Console.WriteLine("\nEnter the number of the product to add it to your cart:\n");
                         groceryStore.UpdateItems(shoppingCart);
                         break;
                     case 2:
                         Console.WriteLine("\nDisplaying clothing items:");
                         clothingStore.DisplayItems();
-                        Console.WriteLine("\nEnter the number of the product to add it to your cart:");
+                        Console.WriteLine("\nEnter the number of the product to add it to your cart:\n");
                         clothingStore.UpdateItems(shoppingCart);
                         break;
                     case 3:
                         Console.WriteLine("\nDisplaying electronics items:");
                         electronicsStore.DisplayItems();
-                        Console.WriteLine("\nEnter the number of the product to add it to your cart:");
+                        Console.WriteLine("\nEnter the number of the product to add it to your cart:\n");
                         electronicsStore.UpdateItems(shoppingCart);
                         break;
                     case 4:
+                        Console.WriteLine("\nDisplaying random items:\n");
+                        var product = productGenerator.RandomItemes(); 
+                        shoppingCart.AddItems(product);
+                        Console.WriteLine($"{product.Name} has been added to your cart.\n");
+                        break;
+                    case 5:
                         Console.WriteLine("\nDisplaying your cart items:");
                         shoppingCart.ViewItems();
                         shoppingCart.CalculateTotal();
                         break;
-                    case 5:
+                    case 6:
                         Console.WriteLine("Thank you for your shopping!");
                         Environment.Exit(0);
                         break;
