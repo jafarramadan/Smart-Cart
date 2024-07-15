@@ -45,5 +45,18 @@ namespace ShoppingCartApplication
             }
             
         }
+
+        public Product RandomItemes()
+        {
+            var keys = new List<string>(ProductCategoryMap.Keys);
+            var random = new Random();
+            int randomIndex = random.Next(keys.Count);
+            string randomKey = keys[randomIndex];
+            Product randomProduct = ProductCategoryMap[randomKey];
+            Console.WriteLine($"Random Product:\n {randomProduct}");
+            return randomProduct;   
+        }
+
+        
     }
 }
